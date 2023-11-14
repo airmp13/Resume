@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Resume.Domain;
+using Resume.Domain.Entities;
 
 namespace Resume.Infrastructure
 {

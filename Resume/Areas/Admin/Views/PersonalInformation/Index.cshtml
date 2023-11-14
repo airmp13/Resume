@@ -1,0 +1,87 @@
+﻿@model Resume.Domain.Entities.PersonalInformation
+
+<div class="content-wrapper">
+<section class="content">
+    <div class="container-fluid">
+
+ <!-- /.row -->
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">PersonalInformation</h3>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                                        <th>@Html.DisplayNameFor(model => model.ID)</th>
+                                        <th>@Html.DisplayNameFor(model => model.FName)</th>
+                                        <th>@Html.DisplayNameFor(model => model.LName)</th>
+                                        <th>@Html.DisplayNameFor(model => model.JobTitle)</th>
+                                        <th>@Html.DisplayNameFor(model => model.birthdate)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Phone)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Address)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Email)</th>
+                                        <th>@Html.DisplayNameFor(model => model.WebsiteAddress)</th>
+                                        <th>@Html.DisplayNameFor(model => model.DescriptionTitle)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Description)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Picture)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                                        <td>@Html.DisplayFor(model => model.ID)</td>
+                                        <td>@Html.DisplayFor(model => model.FName)</td>
+                                        <td>@Html.DisplayFor(model => model.LName)</td>
+                                        <td>@Html.DisplayFor(model => model.JobTitle)</td>
+                                        <td>@Html.DisplayFor(model => model.birthdate)</td>
+                                        <td>@Html.DisplayFor(model => model.Phone)</td>
+                                        <td>@Html.DisplayFor(model => model.Address)</td>
+                                        <td>@Html.DisplayFor(model => model.Email)</td>
+                                        <td>@Html.DisplayFor(model => model.WebsiteAddress)</td>
+                                        <td>@Html.DisplayFor(model => model.DescriptionTitle)</td>
+                                        <td>@Html.DisplayFor(model => model.Description)</td>
+                                        <td>@Html.DisplayFor(model => model.Picture)</td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+        <!-- /.row -->
+</div>
+</section>
+
+
+
+    <div>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+
+
+
+
+
+
+</div>
+

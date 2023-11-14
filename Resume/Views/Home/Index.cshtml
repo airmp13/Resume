@@ -1,4 +1,4 @@
-﻿@model Resume.Domain.AllDTO
+﻿@model Resume.Application.DTOs.Site.SinglePageDTO
 
 
 @{
@@ -26,47 +26,47 @@
 		<div class="w3-banner-grids">
 			<div class="col-md-6 w3-banner-grid-left">
 				<div class="w3-banner-img">
-					<img src=@Model.PersonalInformation.Picture alt="img">
+					<img src=@Model.PersonalInformationDTO.Picture alt="img">
 
-					<h3 class="test">@Model.PersonalInformation.FName Is</h3>
-					<p class="test">@Model.PersonalInformation.JobTitle</p>
+					<h3 class="test">@Model.PersonalInformationDTO.FName @Model.PersonalInformationDTO.LName</h3>
+					<p class="test">@Model.PersonalInformationDTO.JobTitle</p>
 				</div>
 			</div>
 			<div class="col-md-6 w3-banner-grid-right">
 				<div class="w3-banner-text">
-					<h3>@Model.PersonalInformation.DescriptionTitle</h3>
-					<p>@Model.PersonalInformation.Description</p>
+					<h3>@Model.PersonalInformationDTO.DescriptionTitle</h3>
+					<p>@Model.PersonalInformationDTO.Description</p>
 				</div>
 				<div class=" w3-right-addres-1">
 					<ul class="address">
 						<li>
 							<ul class="agileits-address-text ">
 								<li class="agile-it-adress-left"><b>D.O.B</b></li>
-								<li><span>:</span>@Model.PersonalInformation.birthdate.Date</li>
+								<li><span>:</span>@Model.PersonalInformationDTO.birthdate.Date</li>
 							</ul>
 						</li>
 						<li>
 							<ul class="agileits-address-text">
 								<li class="agile-it-adress-left"><b>PHONE</b></li>
-								<li><span>:</span>@Model.PersonalInformation.Phone</li>
+								<li><span>:</span>@Model.PersonalInformationDTO.Phone</li>
 							</ul>
 						</li>
 						<li>
 							<ul class="agileits-address-text">
 								<li class="agile-it-adress-left"><b>ADDRESS</b></li>
-								<li><span>:</span>@Model.PersonalInformation.Address</li>
+								<li><span>:</span>@Model.PersonalInformationDTO.Address</li>
 							</ul>
 						</li>
 						<li>
 							<ul class="agileits-address-text">
 								<li class="agile-it-adress-left"><b>E-MAIL</b></li>
-								<li><span>:</span><a href="mailto:example@mail.com">@Model.PersonalInformation.Email</a></li>
+								<li><span>:</span><a href="mailto:example@mail.com">@Model.PersonalInformationDTO.Email</a></li>
 							</ul>
 						</li>
 						<li>
 							<ul class="agileits-address-text">
 								<li class="agile-it-adress-left"><b>WEBSITE</b></li>
-								<li><span>:</span><a href="#">@Model.PersonalInformation.WebsiteAddress</a></li>
+								<li><span>:</span><a href="#">@Model.PersonalInformationDTO.WebsiteAddress</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -96,13 +96,13 @@
 		<div class="w3-about-grids">
 			<div class=" w3-about-grids1">
 				<div class="col-md-6 w3-about-grid-left1">
-					<img src=@Model.AboutMe.Title1_img alt="img1">
+					<img src=@Model.AboutMeDTO.Title1_img alt="img1">
 
 				</div>
 				<div class="col-md-6 w3-about-grid-right1">
-					<h3>@Model.AboutMe.Title1</h3>
-					<p>@Model.AboutMe.Description1</p>
-					<h5>@Model.AboutMe.subtitle1</h5>
+					<h3>@Model.AboutMeDTO.Title1</h3>
+					<p>@Model.AboutMeDTO.Description1</p>
+					<h5>@Model.AboutMeDTO.subtitle1</h5>
 					<div class="w3-about-grid-small-border">
 					@for(int i=0;i<3;i++)
 						{
@@ -119,13 +119,13 @@
 				<div class="clearfix"></div>
 				<div class="w3-about-grids2">
 					<div class="col-md-6 w3-about-grid-left2">
-						<h3>@Model.AboutMe.Title2</h3>
-						<p>@Model.AboutMe.Description2 </p>
+						<h3>@Model.AboutMeDTO.Title2</h3>
+						<p>@Model.AboutMeDTO.Description2 </p>
 						<h4><a href="#">Readmore</a></h4>
 
 					</div>
 					<div class="col-md-6 w3-about-grid-right2">
-						<img src=@Model.AboutMe.Title2_img alt="img1">
+						<img src=@Model.AboutMeDTO.Title2_img alt="img1">
 
 					</div>
 					<div class="clearfix"></div>
@@ -143,7 +143,7 @@
 				<div class="w3-edu-grid-header">
 					<h3>Experiences</h3>
 				</div>
-				@foreach(var exp in Model.ExperiencesList)
+				@foreach (var exp in Model.ExperiencesDTOList)
 				{
 					<div class="col-md-4 w3-edu-info1">
 						<h3>@exp.EntryDateYear</h3>
@@ -166,7 +166,7 @@
 					<h3>Education</h3>
 				</div>
 
-				@foreach(var edu in Model.EducationsList)
+				@foreach (var edu in Model.EducationsDTOList)
 				{
 					<div class="col-md-3 w3-edu-info-right1">
 						<h3>@edu.EntryDateYear</h3>
@@ -200,7 +200,7 @@
 					<section class='wrap'>
 						<div class='wrap_right'>
 							<div class='bar_group'>
-								@foreach (var sk in Model.MySkillsGrade0List)
+								@foreach (var sk in Model.MySkillsDTOGrade0List)
 								{
 									<div class='bar_group__bar thin' label=@sk.Name show_values='true' tooltip='true' value=@sk.Value></div>
 
@@ -218,7 +218,7 @@
 					<section class='wrap'>
 						<div class='wrap_right'>
 							<div class='bar_group'>
-								@foreach (var sk in Model.MySkillsGrade1List)
+								@foreach (var sk in Model.MySkillsDTOGrade1List)
 								{
 									<div class='bar_group__bar thin' label=@sk.Name show_values='true' tooltip='true' value=@sk.Value></div>
 								}
@@ -257,7 +257,7 @@
 					
 				</ul>
 				<div class="filtr-container " style="padding: 0px; position: relative; height: 858px;">
-					@foreach(var proj in Model.ProjectsList)
+					@foreach (var proj in Model.ProjectsDTOList)
 					{
 						string data = "#" + proj.Name;
 						string category="";
@@ -295,10 +295,7 @@
 	<!--//gallery-->
 </div>
 <!-- //main-content -->
-
-
-
-@foreach(var projdetail in Model.ProjectsList)
+@foreach (var projdetail in Model.ProjectsDTOList)
 {
 		<div class="modal fade" id=@projdetail.Name tabindex="-1" role="dialog">
 			<div class="modal-dialog">
@@ -342,13 +339,13 @@
 		<div class="contact-w3ls">
 			<form asp-action="Index" method="post">
 				<div class="col-md-7 col-sm-7 contact-left agileits-w3layouts">
-					<input type="text" asp-for="ContactMe.Name" name="Name" placeholder="Name" required="">
-					<input type="email" asp-for="ContactMe.Email" class="email" name="Email" placeholder="Email" required="">
-					<input type="text" asp-for="ContactMe.PhoneNumber" name="PhoneNumber" placeholder="Mobile Number" required="">
+					<input type="text" asp-for="ContactMeDTO.Name" name="Name" placeholder="Name" required="">
+					<input type="email" asp-for="ContactMeDTO.Email" class="email" name="Email" placeholder="Email" required="">
+					<input type="text" asp-for="ContactMeDTO.PhoneNumber" name="PhoneNumber" placeholder="Mobile Number" required="">
 					<!-- <input type="text" class="email" name="Last Name" placeholder="Last Name" required=""> -->
 				</div>
 				<div class="col-md-5 col-sm-5 contact-right agileits-w3layouts">
-					<textarea name="Message" asp-for="ContactMe.Message" placeholder="Message" required=""></textarea>
+					<textarea name="Message" asp-for="ContactMeDTO.Message" placeholder="Message" required=""></textarea>
 					<input type="submit" value="Submit">
 				</div>
 				<div class="clearfix"> </div>
@@ -371,7 +368,7 @@
 					</div>
 					<div class="w3ls_footer_grid_leftr">
 						<h4>Location</h4>
-						<p>@Html.DisplayFor(m=> m.PersonalInformation.Address)</p>
+						<p>@Html.DisplayFor(m=> m.PersonalInformationDTO.Address)</p>
 					</div>
 					<div class="clearfix"> </div>
 				</div>
@@ -381,7 +378,7 @@
 					</div>
 					<div class="w3ls_footer_grid_leftr">
 						<h4>Email</h4>
-						<a href="mailto:info@example.com">@Html.DisplayFor(m=> m.PersonalInformation.Email)</a>
+						<a href="mailto:info@example.com">@Html.DisplayFor(m=> m.PersonalInformationDTO.Email)</a>
 					</div>
 					<div class="clearfix"> </div>
 				</div>
@@ -391,7 +388,7 @@
 					</div>
 					<div class="w3ls_footer_grid_leftr">
 						<h4>Call Me</h4>
-						<p>@Html.DisplayFor(m => m.PersonalInformation.Phone)</p>
+						<p>@Html.DisplayFor(m => m.PersonalInformationDTO.Phone)</p>
 					</div>
 					<div class="clearfix"> </div>
 				</div>

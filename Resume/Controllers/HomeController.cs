@@ -1,18 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow;
-using Resume.Application;
+using Resume.Application.DTOs.Site;
+using Resume.Application.Services.Interfaces;
 using Resume.Domain;
+using Resume.Domain.Entities;
 
 namespace Resume.Controllers
 {
     public class HomeController : Controller
     {
 
-        IAllDTOService _allDTOService;
+        ISinglePageService _SinglePageService;
 
-        public HomeController(IAllDTOService allDTOService)
+        public HomeController(ISinglePageService SinglePageService)
         {
-            _allDTOService = allDTOService;
+            _SinglePageService = SinglePageService;
         }
 
         public IActionResult View3(Exception exception)
@@ -22,25 +24,20 @@ namespace Resume.Controllers
 
         public async Task<IActionResult> Index()
         {
-            try
-            {
-                AllDTO allDTO = await _allDTOService.GetAllDTOAsync();
-                return View(allDTO);
-            }
-            catch (Exception ex)
-            {
-                //throw new Exception("error");
-                return RedirectToAction("View3", routeValues: new {ex2= ex });
-            }
+            
+                SinglePageDTO singlePageDTO = await _SinglePageService.GetSinglePageDTOAsync();
+                return View(singlePageDTO);
+            
+            
                 
            
             
         }
 
         [HttpPost]
-		public async Task<IActionResult> Index(ContactMe contactMe)
+		public async Task<IActionResult> Index(ContactMeDTO contactMeDTO)
 		{
-            _allDTOService.submitContactme(contactMe);
+            _SinglePageService.submitContactme(contactMeDTO);
 			return RedirectToAction("Index");
 		}
 

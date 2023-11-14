@@ -1,0 +1,88 @@
+﻿@model Resume.Domain.Entities.PersonalInformation
+
+<div class="content-wrapper">
+    <section class="content">
+
+        <div class="container-fluid">
+
+<h4>PersonalInformation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ID" class="control-label"></label>
+                <input asp-for="ID" class="form-control" />
+                <span asp-validation-for="ID" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="FName" class="control-label"></label>
+                <input asp-for="FName" class="form-control" />
+                <span asp-validation-for="FName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LName" class="control-label"></label>
+                <input asp-for="LName" class="form-control" />
+                <span asp-validation-for="LName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobTitle" class="control-label"></label>
+                <input asp-for="JobTitle" class="form-control" />
+                <span asp-validation-for="JobTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescriptionTitle" class="control-label"></label>
+                <input asp-for="DescriptionTitle" class="form-control" />
+                <span asp-validation-for="DescriptionTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control" ></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="birthdate" class="control-label"></label>
+                <input asp-for="birthdate" class="form-control" />
+                <span asp-validation-for="birthdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebsiteAddress" class="control-label"></label>
+                <input asp-for="WebsiteAddress" class="form-control" />
+                <span asp-validation-for="WebsiteAddress" class="text-danger"></span>
+            </div>
+                        <div class="form-group">
+                            <label asp-for="Picture" class="control-label"></label>
+                            <input asp-for="Picture" class="form-control" />
+                            <span asp-validation-for="Picture" class="text-danger"></span>
+                        </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</div>
+</section>
+            </div>
