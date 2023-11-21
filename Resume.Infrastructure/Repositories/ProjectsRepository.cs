@@ -21,5 +21,10 @@ namespace Resume.Infrastructure.Repositories
         {
             return await _context.projects.ToListAsync();
         }
+
+        public async Task<Projects> GetProjectsAsync(int id)
+        {
+            return _context.projects.FirstOrDefault(p => p.ID == id);
+        }
     }
 }

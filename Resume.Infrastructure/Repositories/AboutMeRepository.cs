@@ -17,10 +17,20 @@ namespace Resume.Infrastructure.Repositories
         {
             _resumeDbContext = resumeDbContext;
         }
+
+        public async Task EditAboutMeAsync(AboutMe aboutMe)
+        {
+            _resumeDbContext.aboutMe.Update(aboutMe);
+            _resumeDbContext.SaveChanges();
+
+        }
+
         public async Task<AboutMe> GetAboutMeAsync()
         {
 
             return await _resumeDbContext.aboutMe.FirstOrDefaultAsync();
         }
+
+        
     }
 }

@@ -1,4 +1,5 @@
-﻿using Resume.Application.DTOs.Site;
+﻿using Resume.Application.DTOs.Admin;
+using Resume.Application.DTOs.Site;
 using Resume.Application.Services.Interfaces;
 using Resume.Domain.Entities;
 using Resume.Domain.RepositoryInterfaces;
@@ -74,6 +75,44 @@ namespace Resume.Application.Services.Implements
         }
 
 
+        public async Task<List<ProjectsAdminDTO>> GetProjectsAdminDTOListAsync()
+        {
+            List<Projects> projects = await GetProjectsListAsync();
+            List<ProjectsAdminDTO> projectsAdminDTO = new();
+
+            foreach (Projects project in projects)
+            {
+                ProjectsAdminDTO projectDTO = new()
+                {
+                    ID = project.ID,
+                    Name = project.Name,
+                    Description = project.Description,
+                    img = project.img,
+                    language = project.language,
+                    Url = project.Url
+                };
+                projectsAdminDTO.Add(projectDTO);
+            }
+
+            return projectsAdminDTO;
+        }
+
+
+        public async Task<ProjectsAdminDTO> GetProjectAdminDTOAsync(int id)
+        {
+            Projects project = await _projectsRepository.GetProjectsAsync(id);
+
+            return new ProjectsAdminDTO()
+            {
+                ID = project.ID,
+                Name = project.Name,
+                Description = project.Description,
+                img = project.img,
+                language = project.language,
+                Url = project.Url
+            };
+
+        }
 
     }
 }

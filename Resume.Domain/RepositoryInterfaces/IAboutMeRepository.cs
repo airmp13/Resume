@@ -5,10 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Resume.Domain.RepositoryInterfaces
 {
     public interface IAboutMeRepository
     {
         Task<AboutMe> GetAboutMeAsync();
+
+        Task EditAboutMeAsync(AboutMe aboutMe);
     }
 }

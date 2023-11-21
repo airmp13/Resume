@@ -45,7 +45,7 @@ namespace Resume.Application.Services.Implements
 
 
             singlePageDTO.PersonalInformationDTO = await _personalInformationService.GetPersonalInformationDTOAsync();
-            singlePageDTO.AboutMeDTO = await _aboutMeService.GetAboutMesDTOAsync();
+            singlePageDTO.AboutMeDTO = await _aboutMeService.GetAboutMeDTOAsync();
             singlePageDTO.AboutmeProject = await _projectsService.GetAboutMeProjectsAsync();
             singlePageDTO.ProjectsDTOList = await _projectsService.GetProjectsDTOListAsync();
             singlePageDTO.ExperiencesDTOList = await _experiencesService.GetExperiencesDTOListAsync();

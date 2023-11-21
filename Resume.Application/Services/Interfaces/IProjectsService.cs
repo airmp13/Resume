@@ -1,4 +1,5 @@
-﻿using Resume.Application.DTOs.Site;
+﻿using Resume.Application.DTOs.Admin;
+using Resume.Application.DTOs.Site;
 using Resume.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -14,5 +15,8 @@ namespace Resume.Application.Services.Interfaces
 
         Task<Dictionary<string, int>> GetAboutMeProjectsAsync();
         Task<List<ProjectsDTO>> GetProjectsDTOListAsync();
+
+        Task<List<ProjectsAdminDTO>> GetProjectsAdminDTOListAsync();
+        Task<ProjectsAdminDTO> GetProjectAdminDTOAsync(int id);
     }
 }

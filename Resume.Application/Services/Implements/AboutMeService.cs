@@ -1,4 +1,5 @@
-﻿using Resume.Application.DTOs.Site;
+﻿using Resume.Application.DTOs.Admin;
+using Resume.Application.DTOs.Site;
 using Resume.Application.Services.Interfaces;
 using Resume.Domain.Entities;
 using Resume.Domain.RepositoryInterfaces;
@@ -19,12 +20,29 @@ namespace Resume.Application.Services.Implements
             _aboutMeRepository = aboutMeRepository;
             
         }
-        public async Task<AboutMe> GetAboutMesAsync()
+        public async Task<AboutMe> GetAboutMeAsync()
         {
             return await _aboutMeRepository.GetAboutMeAsync();
         }
 
-        public async Task<AboutMeDTO> GetAboutMesDTOAsync()
+        public async Task<AboutMeAdminDTO> GetAboutMeAdminDTOAsync()
+        {
+            AboutMe about = await _aboutMeRepository.GetAboutMeAsync();
+
+            return new AboutMeAdminDTO()
+            {
+                ID = about.ID,
+                Description1 = about.Description1,
+                Description2 = about.Description2,
+                subtitle1 = about.subtitle1,
+                Title1 = about.Title1,
+                Title2 = about.Title2,
+                Title1_img = about.Title1_img,
+                Title2_img = about.Title2_img
+            };
+        }
+
+        public async Task<AboutMeDTO> GetAboutMeDTOAsync()
         {
             AboutMe a = await _aboutMeRepository.GetAboutMeAsync();
             return new AboutMeDTO() 
@@ -39,9 +57,22 @@ namespace Resume.Application.Services.Implements
             };
         }
 
+        public async Task EditAboutMeAdminDTOAsync(AboutMeAdminDTO aboutMeAdminDTO)
+        {
+            AboutMe aboutMe = new()
+            {
+                ID = aboutMeAdminDTO.ID,
+                Description1 = aboutMeAdminDTO.Description1,
+                Description2 = aboutMeAdminDTO.Description2,
+                subtitle1 = aboutMeAdminDTO.subtitle1,
+                Title1 = aboutMeAdminDTO.Title1,
+                Title2 = aboutMeAdminDTO.Title2,
+                Title1_img = aboutMeAdminDTO.Title1_img,
+                Title2_img = aboutMeAdminDTO.Title2_img
+            };
+            await _aboutMeRepository.EditAboutMeAsync(aboutMe);
+        }
 
-
-
-
+        
     }
 }
