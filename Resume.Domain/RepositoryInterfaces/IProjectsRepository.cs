@@ -9,7 +9,13 @@ namespace Resume.Domain.RepositoryInterfaces
 {
     public interface IProjectsRepository
     {
+        Task Create(Projects projects);
         Task<List<Projects>> GetProjectsListAsync();
         Task<Projects> GetProjectsAsync(int id);
+
+        Task Edit(Projects projects);
+
+
+        Task Delete(Projects projects);
     }
 }

@@ -19,6 +19,18 @@ namespace Resume.Application.Services.Implements
         {
             _projectsRepository = projectsRepository;
         }
+
+        public async Task Create(ProjectsDTO projectsDTO)
+        {
+            await _projectsRepository.Create(new Projects()
+            {
+                Name = projectsDTO.Name,
+                Description = projectsDTO.Description,
+                img = projectsDTO.img,
+                language = projectsDTO.language,
+                Url = projectsDTO.Url
+            });
+        }
         public async Task<List<Projects>> GetProjectsListAsync()
         {
             return await _projectsRepository.GetProjectsListAsync();
@@ -112,6 +124,26 @@ namespace Resume.Application.Services.Implements
                 Url = project.Url
             };
 
+        }
+
+        public async Task Edit(ProjectsAdminDTO projectsAdminDTO)
+        {
+            _projectsRepository.Edit(new Projects()
+            {
+                Description = projectsAdminDTO.Description,
+                ID = projectsAdminDTO.ID,
+                Name = projectsAdminDTO.Name,
+                Url = projectsAdminDTO.Url,
+                img = projectsAdminDTO.img,
+                language=projectsAdminDTO.language
+                
+            });
+        }
+
+        public async Task Delete(int id)
+        {
+            
+            await _projectsRepository.Delete(await _projectsRepository.GetProjectsAsync(id));
         }
 
     }

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NuGet.Protocol.Core.Types;
 using Resume.Application.DTOs.Admin;
+using Resume.Application.DTOs.Site;
 using Resume.Application.Services.Interfaces;
 
 namespace Resume.Areas.Admin.Controllers
@@ -20,6 +22,19 @@ namespace Resume.Areas.Admin.Controllers
             return View(await _projectsService.GetProjectsAdminDTOListAsync());
         }
 
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(ProjectsDTO projectsDTO)
+        {
+            await _projectsService.Create(projectsDTO);
+            return View();
+        }
+
+
         public async Task<IActionResult> Edit(int id)
         {
 
@@ -29,8 +44,27 @@ namespace Resume.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(ProjectsAdminDTO projectsAdminDTO)
         {
+            await _projectsService.Edit(projectsAdminDTO);
 
             return View() ;
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+           
+            return View(await _projectsService.GetProjectAdminDTOAsync(id));
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            
+            return View(await _projectsService.GetProjectAdminDTOAsync(id));
+        }
+        [HttpPost]
+        public async Task<IActionResult> Delete(ProjectsAdminDTO projectsAdminDTO)
+        {
+            await _projectsService.Delete(projectsAdminDTO.ID);
+            return View();
         }
 
     }
