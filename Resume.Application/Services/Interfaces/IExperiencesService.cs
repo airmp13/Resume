@@ -22,8 +22,8 @@ namespace Resume.Application.Services.Interfaces
 
         Task<List<ExperiencesDTO>> GetExperiencesDTOListAsync();
 
-        Task<List<ExperiencesAdminDTO>> GetExperiencesAdminDTOListAsync();
         Task<ExperiencesAdminDTO> GetExperiencesAdminDTOAsync(int id);
+        Task<List<ExperiencesAdminDTO>> GetExperiencesAdminDTOListAsync();
 
     }
 }

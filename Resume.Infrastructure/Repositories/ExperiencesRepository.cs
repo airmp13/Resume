@@ -37,15 +37,17 @@ namespace Resume.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task<Experiences> GetExperiencesAsync(int id)
+        {
+            return await _context.experiences.FirstOrDefaultAsync(e => e.ID == id);
+
+        }
+
         public async Task<List<Experiences>> GetExperiencesListAsync()
         {
             return await _context.experiences.ToListAsync();
         }
 
-        public async Task<Experiences> GetExperiencesAsync(int id)
-        {
-            return await _context.experiences.FirstOrDefaultAsync(e=> e.ID == id);
-
-        }
+        
     }
 }

@@ -13,8 +13,9 @@ namespace Resume.Domain.RepositoryInterfaces
         Task Create(Experiences experiences);
         Task Edit(Experiences experiences);
         Task Delete(Experiences experiences);
-        Task<List<Experiences>> GetExperiencesListAsync();
         Task<Experiences> GetExperiencesAsync(int id);
+        Task<List<Experiences>> GetExperiencesListAsync();
+        
 
     }
 }
