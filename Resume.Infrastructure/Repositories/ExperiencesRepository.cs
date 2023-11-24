@@ -19,9 +19,33 @@ namespace Resume.Infrastructure.Repositories
             
         }
 
+        public async Task Create(Experiences experiences)
+        {
+            await _context.experiences.AddAsync(experiences);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Edit(Experiences experiences)
+        {
+            _context.experiences.Update(experiences);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Delete(Experiences experiences)
+        {
+            _context.experiences.Remove(experiences);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<List<Experiences>> GetExperiencesListAsync()
         {
             return await _context.experiences.ToListAsync();
+        }
+
+        public async Task<Experiences> GetExperiencesAsync(int id)
+        {
+            return await _context.experiences.FirstOrDefaultAsync(e=> e.ID == id);
+
         }
     }
 }
