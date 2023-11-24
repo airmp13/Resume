@@ -46,16 +46,17 @@ namespace Resume.Areas.Admin.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            return View();
+            return View(await _experiencesService.GetExperiencesAdminDTOAsync(id));
         }
 
         public async Task<IActionResult> Delete(int id)
         {
-            return View();
+            return View(await _experiencesService.GetExperiencesAdminDTOAsync(id));
         }
         [HttpPost]
         public async Task<IActionResult> Delete(ExperiencesAdminDTO experiencesAdminDTO)
         {
+            await _experiencesService.Delete(experiencesAdminDTO);
             return View();
         }
     }

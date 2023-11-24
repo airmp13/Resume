@@ -16,6 +16,8 @@ namespace Resume.Application.Services.Interfaces
 
         Task Edit(ExperiencesAdminDTO experiencesAdminDTO);
 
+        Task Delete(ExperiencesAdminDTO experiencesAdminDTO);
+
         Task<List<Experiences>> GetExperiencesListAsync();
 
         Task<List<ExperiencesDTO>> GetExperiencesDTOListAsync();

@@ -47,6 +47,19 @@ namespace Resume.Application.Services.Implements
                 position = experiencesAdminDTO.position
             });
         }
+        public async Task Delete(ExperiencesAdminDTO experiencesAdminDTO)
+        {
+            await _experiencesRepository.Delete(new Experiences()
+            {
+                ID = experiencesAdminDTO.ID,
+                Title = experiencesAdminDTO.Title,
+                JobTitle = experiencesAdminDTO.JobTitle,
+                EntryDateYear = experiencesAdminDTO.EntryDateYear,
+                Description = experiencesAdminDTO.Description,
+                Icon = experiencesAdminDTO.Icon,
+                position = experiencesAdminDTO.position
+            });
+        }
 
 
 
