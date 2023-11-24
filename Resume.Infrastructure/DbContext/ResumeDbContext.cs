@@ -33,5 +33,7 @@ namespace Resume.Infrastructure
 
         public DbSet<ContactMe> contactMe { get; set; }
 
+        public DbSet<User> users { get; set; }
+
     }
 }

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Resume.Application.Services.Implements;
 using Resume.Application.Services.Interfaces;
@@ -26,6 +27,7 @@ namespace Resume
             builder.Services.AddScoped<IMySkillsService, MySkillsService>();
             builder.Services.AddScoped<IProjectsService, ProjectsService>();
             builder.Services.AddScoped<IContactMeService, ContactMeService>();
+            builder.Services.AddScoped<IAccountService, AccountService>();
 
             //Repository Injections
             builder.Services.AddScoped<IPersonalInformationRepository, PersonalInformationRepository>();
@@ -35,10 +37,32 @@ namespace Resume
             builder.Services.AddScoped<IMySkillsRepository, MySkillsRepository>();
             builder.Services.AddScoped<IProjectsRepository, ProjectsRepository>();
             builder.Services.AddScoped<IContactMeRepository, ContactMeRepository>();
-            
+            builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+
+            // Sql Injection
 
             builder.Services.AddDbContext<ResumeDbContext>(op =>
             op.UseSqlServer(builder.Configuration.GetConnectionString("ResumeDbContext")));
+
+
+            //Authentication
+
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            })
+                // Add Cookie settings
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/Account/Login";
+                    options.LogoutPath = "/Account/Logout";
+                    options.ExpireTimeSpan = TimeSpan.FromDays(30);
+                });
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -50,6 +74,7 @@ namespace Resume
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
