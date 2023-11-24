@@ -80,7 +80,7 @@
 
                 <!-- Messages Dropdown Menu -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
+                    <a class="nav-link" data-toggle="dropdown" href="/ContactMe">
                         <i class="far fa-comments"></i>
                         <span class="badge badge-danger navbar-badge">3</span>
                     </a>
@@ -223,7 +223,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link active">
+                                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Dashboard</p>
                                     </a>
@@ -358,6 +358,40 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="/admin/MySkills" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View All</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/admin/MySkills/GradeOne" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Grade One</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/admin/MySkills/GradeZero" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Grade Zero</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    Contact Me 
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/admin/ContactMe" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>View</p>
                                     </a>

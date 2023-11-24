@@ -1,4 +1,5 @@
-﻿using Resume.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Resume.Domain.Entities;
 using Resume.Domain.RepositoryInterfaces;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,22 @@ namespace Resume.Infrastructure.Repositories
         {
             _context.contactMe.Add(contactMe);
             _context.SaveChanges();
+        }
+
+        public async Task<List<ContactMe>> GetContactMesListAsync()
+        {
+            return _context.contactMe.ToList();
+        }
+
+        public async Task<ContactMe> GetContactMeAsync(int id)
+        {
+            return await _context.contactMe.FirstOrDefaultAsync(c => c.ID == id);
+        }
+
+        public async Task Delete(ContactMe contactMe)
+        {
+            _context.contactMe.Remove(contactMe);
+            await _context.SaveChangesAsync();
         }
     }
 }

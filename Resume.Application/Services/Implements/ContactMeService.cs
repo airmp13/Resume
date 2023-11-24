@@ -31,5 +31,51 @@ namespace Resume.Application.Services.Implements
             };   
             await _contactMeRepository.SubmitNewContactMe(contactMe);
         }
+
+        public async Task<List<ContactMeAdminDTO>> GetContactMesAdminDTO()
+        {
+            List<ContactMe> contactMes=await _contactMeRepository.GetContactMesListAsync();
+            List<ContactMeAdminDTO> contactMeAdminDTOs = new();
+
+            foreach (ContactMe contactMe in contactMes)
+            {
+                ContactMeAdminDTO contactMeAdminDTO = new()
+                {
+                    ID = contactMe.ID, 
+                    Email = contactMe.Email,
+                    Message= contactMe.Message,
+                    PhoneNumber = contactMe.PhoneNumber
+                };
+                contactMeAdminDTOs.Add(contactMeAdminDTO);
+            }
+
+            return contactMeAdminDTOs;
+
+
+        }
+
+        public async Task<ContactMeAdminDTO> GetContactMeAdminDTO(int id)
+        {
+            ContactMe contactMe = await _contactMeRepository.GetContactMeAsync(id);
+            return new ContactMeAdminDTO() { 
+                    ID = contactMe.ID,
+                    Email = contactMe.Email,
+                    Message = contactMe.Message,
+                    PhoneNumber = contactMe.PhoneNumber
+                };
+        }
+
+        public async Task Delete(ContactMeAdminDTO contactMeAdminDTO)
+        {
+            await _contactMeRepository.Delete(new ContactMe()
+            {
+                ID = contactMeAdminDTO.ID,
+                Email = contactMeAdminDTO.Email,
+                Message = contactMeAdminDTO.Message,
+                PhoneNumber = contactMeAdminDTO.PhoneNumber
+            });
+        }
+
+
     }
 }

@@ -10,5 +10,11 @@ namespace Resume.Domain.RepositoryInterfaces
     public interface IContactMeRepository
     {
         Task SubmitNewContactMe(ContactMe contactMe);
+
+        Task<List<ContactMe>> GetContactMesListAsync();
+
+        Task<ContactMe> GetContactMeAsync(int id);
+
+        Task Delete(ContactMe contactMe);
     }
 }

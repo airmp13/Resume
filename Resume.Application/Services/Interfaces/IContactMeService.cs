@@ -11,5 +11,9 @@ namespace Resume.Application.Services.Interfaces
     public interface IContactMeService
     {
         Task SubmitNewContactMe(ContactMeDTO contactMeDTO);
+        Task<List<ContactMeAdminDTO>> GetContactMesAdminDTO();
+        Task<ContactMeAdminDTO> GetContactMeAdminDTO(int id);
+
+        Task Delete(ContactMeAdminDTO contactMeAdminDTO);
     }
 }

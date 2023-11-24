@@ -25,6 +25,19 @@ namespace Resume.Areas.Admin.Controllers
             return View(mySkillsAdminDTO0);
         }
 
+        public async Task<IActionResult> GradeZero()
+        {
+            
+            return View(await _mySkillsService.GetGradedMySkillsAdminDTOListAsync(0));
+        }
+
+        public async Task<IActionResult> GradeOne()
+        {
+            return View(await _mySkillsService.GetGradedMySkillsAdminDTOListAsync(1));
+        }
+
+
+
         public IActionResult Create()
         {
             return View();
