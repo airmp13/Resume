@@ -128,7 +128,7 @@ namespace Resume.Application.Services.Implements
 
         public async Task Edit(ProjectsAdminDTO projectsAdminDTO)
         {
-            _projectsRepository.Edit(new Projects()
+            await _projectsRepository.Edit(new Projects()
             {
                 Description = projectsAdminDTO.Description,
                 ID = projectsAdminDTO.ID,
