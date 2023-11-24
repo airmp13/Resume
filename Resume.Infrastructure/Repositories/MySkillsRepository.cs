@@ -18,7 +18,28 @@ namespace Resume.Infrastructure.Repositories
             _context = context;
         }
 
-        
+        public async Task Create(MySkills mySkills)
+        {
+            await _context.mySkills.AddAsync(mySkills);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Edit(MySkills mySkills)
+        {
+            _context.mySkills.Update(mySkills);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Delete(MySkills mySkills)
+        {
+            _context.mySkills.Remove(mySkills);
+            await _context.SaveChangesAsync();
+        }
+        public async Task<MySkills> GetMySkillsAsync(int id)
+        {
+            return await _context.mySkills.FirstOrDefaultAsync(e => e.ID == id);
+
+        }
 
         public async Task<List<MySkills>> GetMySkillsListAsync()
         {

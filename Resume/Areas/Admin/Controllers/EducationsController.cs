@@ -6,12 +6,12 @@ using Resume.Application.Services.Interfaces;
 namespace Resume.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class EducationController : Controller
+    public class EducationsController : Controller
     {
 
         private readonly IEducationService _EducationService;
 
-        public EducationController(IEducationService EducationService)
+        public EducationsController(IEducationService EducationService)
         {
             _EducationService = EducationService;
         }
