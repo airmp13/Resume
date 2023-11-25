@@ -57,6 +57,11 @@ namespace Resume.Areas.Admin.Controllers
             return View(loginDTO);
         }
 
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return Redirect("/");
+        }
 
     }
 }

@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Resume.Application.Services.Interfaces;
 using Resume.Domain.Entities;
 
 namespace Resume.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin"),Authorize]
     public class PersonalInformationController : Controller
     {
         private readonly IPersonalInformationService _personalInformationService;

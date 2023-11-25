@@ -57,8 +57,8 @@ namespace Resume
                 // Add Cookie settings
                 .AddCookie(options =>
                 {
-                    options.LoginPath = "/Account/Login";
-                    options.LogoutPath = "/Account/Logout";
+                    options.LoginPath = "/admin/Account/Login";
+                    options.LogoutPath = "/admin/Account/Logout";
                     options.ExpireTimeSpan = TimeSpan.FromDays(30);
                 });
 

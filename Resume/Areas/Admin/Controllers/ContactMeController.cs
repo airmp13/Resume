@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Resume.Application.DTOs.Site;
 using Resume.Application.Services.Interfaces;
 
 namespace Resume.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin"),Authorize]
     public class ContactMeController : Controller
     {
         private readonly IContactMeService _contactMeService;

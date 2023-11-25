@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NuGet.Protocol.Core.Types;
 using Resume.Application.DTOs.Admin;
 using Resume.Application.DTOs.Site;
@@ -6,7 +7,7 @@ using Resume.Application.Services.Interfaces;
 
 namespace Resume.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin"),Authorize]
     public class ProjectsController : Controller
     {
         private readonly IProjectsService _projectsService;
