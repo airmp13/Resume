@@ -1,4 +1,5 @@
 ﻿using Resume.Application.DTOs.Admin;
+using Resume.Application.DTOs.Mapper;
 using Resume.Application.DTOs.Site;
 using Resume.Application.Services.Interfaces;
 using Resume.Domain.Entities;
@@ -24,36 +25,16 @@ namespace Resume.Application.Services.Implements
 
         public async Task Create(EducationsDTO educationsDTO)
         {
-            await _educationRepository.Create(new Educations()
-            {
-                Title = educationsDTO.Title,
-                SubTitle = educationsDTO.SubTitle,
-                Description = educationsDTO.Description,
-                EntryDateYear = educationsDTO.EntryDateYear
-            });
+            await _educationRepository.Create(DTOMapper.ToEducations(educationsDTO));
         }
 
         public async Task Edit(EducationsAdminDTO educationsAdminDTO)
         {
-            await _educationRepository.Edit(new Educations()
-            {
-                ID = educationsAdminDTO.ID,
-                Title = educationsAdminDTO.Title,
-                SubTitle = educationsAdminDTO.SubTitle,
-                Description = educationsAdminDTO.Description,
-                EntryDateYear = educationsAdminDTO.EntryDateYear
-            });
+            await _educationRepository.Edit(DTOMapper.ToEducations(educationsAdminDTO));
         }
         public async Task Delete(EducationsAdminDTO educationsAdminDTO)
         {
-            await _educationRepository.Delete(new Educations()
-            {
-                ID = educationsAdminDTO.ID,
-                Title = educationsAdminDTO.Title,
-                SubTitle = educationsAdminDTO.SubTitle,
-                Description = educationsAdminDTO.Description,
-                EntryDateYear = educationsAdminDTO.EntryDateYear
-            });
+            await _educationRepository.Delete(DTOMapper.ToEducations(educationsAdminDTO));
         }
         public async Task<List<Educations>> GetEducationsListAsync()
         {
@@ -67,14 +48,7 @@ namespace Resume.Application.Services.Implements
 
             foreach (Educations education in educations)
             {
-                EducationsDTO educationDTO = new()
-                {
-                    Title = education.Title,
-                    EntryDateYear = education.EntryDateYear,
-                    Description = education.Description,
-                    SubTitle = education.SubTitle
-                };
-                educationsDTO.Add(educationDTO);
+                educationsDTO.Add(DTOMapper.ToEducationsDTO(education));
             }
 
             return educationsDTO;
@@ -88,15 +62,7 @@ namespace Resume.Application.Services.Implements
 
             foreach (Educations education in educations)
             {
-                EducationsAdminDTO educationAdminDTO = new()
-                {
-                    ID = education.ID,
-                    Title = education.Title,
-                    SubTitle = education.SubTitle,
-                    Description = education.Description,
-                    EntryDateYear = education.EntryDateYear
-                };
-                educationsAdminDTOs.Add(educationAdminDTO);
+                educationsAdminDTOs.Add(DTOMapper.ToEducationsAdminDTO(education));
             }
 
             return educationsAdminDTOs;
@@ -104,15 +70,8 @@ namespace Resume.Application.Services.Implements
 
         public async Task<EducationsAdminDTO> GetEducationsAdminDTOAsync(int id)
         {
-            Educations educations = await _educationRepository.GetEducationsAsync(id);
-            return new EducationsAdminDTO()
-            {
-                ID = educations.ID,
-                Title = educations.Title,
-                SubTitle = educations.SubTitle,
-                Description = educations.Description,
-                EntryDateYear = educations.EntryDateYear
-            };
+            
+            return DTOMapper.ToEducationsAdminDTO(await _educationRepository.GetEducationsAsync(id));
 
         }
 

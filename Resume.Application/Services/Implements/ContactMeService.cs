@@ -1,4 +1,5 @@
-﻿using Resume.Application.DTOs.Site;
+﻿using Resume.Application.DTOs.Mapper;
+using Resume.Application.DTOs.Site;
 using Resume.Application.Services.Interfaces;
 using Resume.Domain.Entities;
 using Resume.Domain.RepositoryInterfaces;
@@ -22,14 +23,8 @@ namespace Resume.Application.Services.Implements
 
         public async Task SubmitNewContactMe(ContactMeDTO contactMeDTO)
         {
-            ContactMe contactMe = new() 
-            { 
-                Name = contactMeDTO.Name,
-                Email = contactMeDTO.Email,
-                Message = contactMeDTO.Message,
-                PhoneNumber = contactMeDTO.PhoneNumber
-            };   
-            await _contactMeRepository.SubmitNewContactMe(contactMe);
+               
+            await _contactMeRepository.SubmitNewContactMe(DTOMapper.ToContactMe(contactMeDTO));
         }
 
         public async Task<List<ContactMeAdminDTO>> GetContactMesAdminDTO()
@@ -39,14 +34,8 @@ namespace Resume.Application.Services.Implements
 
             foreach (ContactMe contactMe in contactMes)
             {
-                ContactMeAdminDTO contactMeAdminDTO = new()
-                {
-                    ID = contactMe.ID, 
-                    Email = contactMe.Email,
-                    Message= contactMe.Message,
-                    PhoneNumber = contactMe.PhoneNumber
-                };
-                contactMeAdminDTOs.Add(contactMeAdminDTO);
+                
+                contactMeAdminDTOs.Add(DTOMapper.ToContactMeAdminDTO(contactMe));
             }
 
             return contactMeAdminDTOs;
@@ -56,24 +45,12 @@ namespace Resume.Application.Services.Implements
 
         public async Task<ContactMeAdminDTO> GetContactMeAdminDTO(int id)
         {
-            ContactMe contactMe = await _contactMeRepository.GetContactMeAsync(id);
-            return new ContactMeAdminDTO() { 
-                    ID = contactMe.ID,
-                    Email = contactMe.Email,
-                    Message = contactMe.Message,
-                    PhoneNumber = contactMe.PhoneNumber
-                };
+            return DTOMapper.ToContactMeAdminDTO(await _contactMeRepository.GetContactMeAsync(id));
         }
 
         public async Task Delete(ContactMeAdminDTO contactMeAdminDTO)
         {
-            await _contactMeRepository.Delete(new ContactMe()
-            {
-                ID = contactMeAdminDTO.ID,
-                Email = contactMeAdminDTO.Email,
-                Message = contactMeAdminDTO.Message,
-                PhoneNumber = contactMeAdminDTO.PhoneNumber
-            });
+            await _contactMeRepository.Delete(DTOMapper.ToContactMe(contactMeAdminDTO));
         }
 
 

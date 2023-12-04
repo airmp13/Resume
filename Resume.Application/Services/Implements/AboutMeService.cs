@@ -1,4 +1,5 @@
 ﻿using Resume.Application.DTOs.Admin;
+using Resume.Application.DTOs.Mapper;
 using Resume.Application.DTOs.Site;
 using Resume.Application.Services.Interfaces;
 using Resume.Domain.Entities;
@@ -27,50 +28,21 @@ namespace Resume.Application.Services.Implements
 
         public async Task<AboutMeAdminDTO> GetAboutMeAdminDTOAsync()
         {
-            AboutMe about = await _aboutMeRepository.GetAboutMeAsync();
+            AboutMe aboutMe = await _aboutMeRepository.GetAboutMeAsync();
 
-            return new AboutMeAdminDTO()
-            {
-                ID = about.ID,
-                Description1 = about.Description1,
-                Description2 = about.Description2,
-                subtitle1 = about.subtitle1,
-                Title1 = about.Title1,
-                Title2 = about.Title2,
-                Title1_img = about.Title1_img,
-                Title2_img = about.Title2_img
-            };
+            return DTOMapper.ToAboutMeAdminDTO(aboutMe);
         }
 
         public async Task<AboutMeDTO> GetAboutMeDTOAsync()
         {
-            AboutMe a = await _aboutMeRepository.GetAboutMeAsync();
-            return new AboutMeDTO() 
-            {
-                Description1 = a.Description1,
-                Description2 = a.Description2,
-                subtitle1 = a.subtitle1,
-                Title1= a.Title1,
-                Title2= a.Title2,
-                Title1_img = a.Title1_img,
-                Title2_img = a.Title2_img
-            };
+            AboutMe aboutMe = await _aboutMeRepository.GetAboutMeAsync();
+            return DTOMapper.ToAboutMeDTO(aboutMe);
         }
 
         public async Task EditAboutMeAdminDTOAsync(AboutMeAdminDTO aboutMeAdminDTO)
         {
-            AboutMe aboutMe = new()
-            {
-                ID = aboutMeAdminDTO.ID,
-                Description1 = aboutMeAdminDTO.Description1,
-                Description2 = aboutMeAdminDTO.Description2,
-                subtitle1 = aboutMeAdminDTO.subtitle1,
-                Title1 = aboutMeAdminDTO.Title1,
-                Title2 = aboutMeAdminDTO.Title2,
-                Title1_img = aboutMeAdminDTO.Title1_img,
-                Title2_img = aboutMeAdminDTO.Title2_img
-            };
-            await _aboutMeRepository.EditAboutMeAsync(aboutMe);
+            
+            await _aboutMeRepository.EditAboutMeAsync(DTOMapper.ToAboutMe(aboutMeAdminDTO));
         }
 
         
