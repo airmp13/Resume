@@ -3,6 +3,7 @@ using Resume.Application.DTOs.Site;
 using Resume.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -208,6 +209,192 @@ namespace Resume.Application.DTOs.Mapper
                 Icon = experiences.Icon,
                 position = experiences.position,
                 EntryDateYear = experiences.EntryDateYear
+            };
+        }
+        #endregion
+
+        #region MySkills Mapping
+
+        public static MySkills ToMySkill(MySkillsDTO mySkillsDTO)
+        {
+
+            return new MySkills()
+            {
+                Name = mySkillsDTO.Name,
+                grade = mySkillsDTO.grade,
+                Value = mySkillsDTO.Value
+            };
+
+        }
+
+        public static MySkills ToMySkill(MySkillsAdminDTO mySkillsAdminDTO)
+        {
+           return new MySkills()
+            {
+                ID = mySkillsAdminDTO.ID,
+                Name = mySkillsAdminDTO.Name,
+                grade = mySkillsAdminDTO.grade,
+                Value = mySkillsAdminDTO.Value
+            };
+        }
+
+        public static MySkillsDTO ToMySkillDTO(MySkills mySkills)
+        {
+            return new MySkillsDTO()
+            {
+                Name = mySkills.Name,
+                grade = mySkills.grade,
+                Value = mySkills.Value
+            };
+        }
+
+        public static MySkillsAdminDTO ToMySkillsAdminDTO(MySkills mySkills)
+        {
+            return new MySkillsAdminDTO()
+            {
+                ID = mySkills.ID,
+                Name = mySkills.Name,
+                grade = mySkills.grade,
+                Value = mySkills.Value
+            };
+        }
+
+        #endregion
+
+        #region     personalinformation Mapping
+
+        public static PersonalInformation ToPersonalInformation(PersonalInformationDTO personalInformationDTO)
+        {
+
+            return new PersonalInformation()
+            {
+                FName = personalInformationDTO.FName,
+                LName = personalInformationDTO.LName,
+                Address = personalInformationDTO.Address,
+                WebsiteAddress = personalInformationDTO.WebsiteAddress,
+                birthdate = personalInformationDTO.birthdate,
+                Description = personalInformationDTO.Description,
+                DescriptionTitle = personalInformationDTO.DescriptionTitle,
+                Email = personalInformationDTO.Email,
+                JobTitle = personalInformationDTO.JobTitle,
+                Phone = personalInformationDTO.Phone,
+                Picture = personalInformationDTO.Picture
+
+            };
+
+        }
+
+        public static PersonalInformation ToPersonalInformation(PersonalInformationAdminDTO personalInformationAdminDTO)
+        {
+            return new PersonalInformation()
+            {
+                ID = personalInformationAdminDTO.ID,
+                FName = personalInformationAdminDTO.FName,
+                LName = personalInformationAdminDTO.LName,
+                Address = personalInformationAdminDTO.Address,
+                WebsiteAddress = personalInformationAdminDTO.WebsiteAddress,
+                birthdate = personalInformationAdminDTO.birthdate,
+                Description = personalInformationAdminDTO.Description,
+                DescriptionTitle = personalInformationAdminDTO.DescriptionTitle,
+                Email = personalInformationAdminDTO.Email,
+                JobTitle = personalInformationAdminDTO.JobTitle,
+                Phone = personalInformationAdminDTO.Phone,
+                Picture = personalInformationAdminDTO.Picture
+
+            };
+        }
+
+        public static PersonalInformationDTO ToPersonalInformationDTO(PersonalInformation personalInformation)
+        {
+            return new PersonalInformationDTO()
+            {
+                FName = personalInformation.FName,
+                LName = personalInformation.LName,
+                Address = personalInformation.Address,
+                WebsiteAddress = personalInformation.WebsiteAddress,
+                birthdate = personalInformation.birthdate,
+                Description = personalInformation.Description,
+                DescriptionTitle = personalInformation.DescriptionTitle,
+                Email = personalInformation.Email,
+                JobTitle = personalInformation.JobTitle,
+                Phone = personalInformation.Phone,
+                Picture = personalInformation.Picture
+
+            };
+        }
+
+        public static PersonalInformationAdminDTO ToPersonalInformationAdminDTO(PersonalInformation personalInformation)
+        {
+            return new PersonalInformationAdminDTO()
+            {
+                ID = personalInformation.ID,
+                FName = personalInformation.FName,
+                LName = personalInformation.LName,
+                Address = personalInformation.Address,
+                WebsiteAddress = personalInformation.WebsiteAddress,
+                birthdate = personalInformation.birthdate,
+                Description = personalInformation.Description,
+                DescriptionTitle = personalInformation.DescriptionTitle,
+                Email = personalInformation.Email,
+                JobTitle = personalInformation.JobTitle,
+                Phone = personalInformation.Phone,
+                Picture = personalInformation.Picture
+            };
+        }
+
+        #endregion
+
+        #region Projects Mapping
+
+        public static Projects ToProjects(ProjectsDTO projectsDTO)
+        {
+            return new Projects()
+            {
+                Name = projectsDTO.Name,
+                Description = projectsDTO.Description,
+                img = projectsDTO.img,
+                language = projectsDTO.language,
+                Url = projectsDTO.Url
+            };
+
+        }
+
+        public static Projects ToProjects(ProjectsAdminDTO projectsAdminDTO)
+        {
+            return new Projects()
+            {
+                ID = projectsAdminDTO.ID,
+                Name = projectsAdminDTO.Name,
+                Description = projectsAdminDTO.Description,
+                Url = projectsAdminDTO.Url,
+                img = projectsAdminDTO.img,
+                language = projectsAdminDTO.language
+
+            };
+        }
+
+        public static ProjectsDTO ToProjectsDTO(Projects projects)
+        {
+            return new ProjectsDTO()
+            {
+                Name = projects.Name,
+                Description = projects.Description,
+                img = projects.img,
+                language = projects.language,
+                Url = projects.Url
+            };
+        }
+
+        public static ProjectsAdminDTO ToProjectsAdminDTO(Projects projects)
+        {
+            return new ProjectsAdminDTO()
+            {
+                ID = projects.ID,
+                Name = projects.Name,
+                Description = projects.Description,
+                img = projects.img,
+                language = projects.language,
+                Url = projects.Url
             };
         }
         #endregion

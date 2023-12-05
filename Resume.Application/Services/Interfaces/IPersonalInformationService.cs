@@ -1,4 +1,5 @@
-﻿using Resume.Application.DTOs.Site;
+﻿using Resume.Application.DTOs.Admin;
+using Resume.Application.DTOs.Site;
 using Resume.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,9 @@ namespace Resume.Application.Services.Interfaces
 {
     public interface IPersonalInformationService
     {
-        Task<PersonalInformation> GetPersonalInformationAsync();
+        Task<PersonalInformationAdminDTO> GetPersonalInformationAdminDTOAsync();
         Task<PersonalInformationDTO> GetPersonalInformationDTOAsync();
 
-        Task EditPersonalInformationAsync(PersonalInformation personalInformation);
+        Task EditPersonalInformationAsync(PersonalInformationAdminDTO personalInformationAdminDTO);
     }
 }

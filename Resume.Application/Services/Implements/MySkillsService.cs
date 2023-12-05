@@ -1,4 +1,5 @@
 ﻿using Resume.Application.DTOs.Admin;
+using Resume.Application.DTOs.Mapper;
 using Resume.Application.DTOs.Site;
 using Resume.Application.Services.Interfaces;
 using Resume.Domain.Entities;
@@ -26,33 +27,16 @@ namespace Resume.Application.Services.Implements
 
         public async Task Create(MySkillsDTO mySkillsDTO)
         {
-            await _mySkillsRepository.Create(new MySkills()
-            {
-                Name = mySkillsDTO.Name,
-                grade = mySkillsDTO.grade,
-                Value = mySkillsDTO.Value
-            });
+            await _mySkillsRepository.Create(DTOMapper.ToMySkill(mySkillsDTO));
         }
 
         public async Task Edit(MySkillsAdminDTO mySkillsAdminDTO)
         {
-            await _mySkillsRepository.Edit(new MySkills()
-            {
-                ID = mySkillsAdminDTO.ID,
-                Name = mySkillsAdminDTO.Name,
-                grade = mySkillsAdminDTO.grade,
-                Value = mySkillsAdminDTO.Value
-            });
+            await _mySkillsRepository.Edit(DTOMapper.ToMySkill(mySkillsAdminDTO));
         }
         public async Task Delete(MySkillsAdminDTO mySkillsAdminDTO)
         {
-            await _mySkillsRepository.Delete(new MySkills()
-            {
-                ID = mySkillsAdminDTO.ID,
-                Name = mySkillsAdminDTO.Name,
-                grade = mySkillsAdminDTO.grade,
-                Value = mySkillsAdminDTO.Value
-            });
+            await _mySkillsRepository.Delete(DTOMapper.ToMySkill(mySkillsAdminDTO));
         }
 
 
@@ -63,14 +47,7 @@ namespace Resume.Application.Services.Implements
 
             foreach (MySkills mySkill in mySkills)
             {
-                MySkillsAdminDTO mySkillAdminDTO = new()
-                {
-                    ID=mySkill.ID,
-                    Name = mySkill.Name,
-                    grade = mySkill.grade,
-                    Value = mySkill.Value
-                };
-                mySkillsAdminDTO.Add(mySkillAdminDTO);
+                mySkillsAdminDTO.Add(DTOMapper.ToMySkillsAdminDTO(mySkill));
             }
 
             return mySkillsAdminDTO;
@@ -78,14 +55,8 @@ namespace Resume.Application.Services.Implements
 
         public async Task<MySkillsAdminDTO> GetMySkillsAdminDTOAsync(int id)
         {
-            MySkills mySkills = await _mySkillsRepository.GetMySkillsAsync(id);
-            return new MySkillsAdminDTO()
-            {
-                ID = mySkills.ID,
-                Name = mySkills.Name,
-                grade = mySkills.grade,
-                Value = mySkills.Value
-            };
+
+            return DTOMapper.ToMySkillsAdminDTO(await _mySkillsRepository.GetMySkillsAsync(id));
 
         }
 
@@ -107,13 +78,7 @@ namespace Resume.Application.Services.Implements
 
             foreach (MySkills mySkill in mySkills)
             {
-                MySkillsDTO mySkillDTO = new()
-                {
-                    Name = mySkill.Name,
-                    grade = grade,
-                    Value = mySkill.Value
-                };
-                mySkillsDTO.Add(mySkillDTO);
+                mySkillsDTO.Add(DTOMapper.ToMySkillDTO(mySkill));
             }
 
             return mySkillsDTO;

@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Resume.Application.DTOs.Admin;
+using Resume.Application.DTOs.Mapper;
 using Resume.Application.DTOs.Site;
 using Resume.Application.Services.Interfaces;
 using Resume.Domain.Entities;
@@ -21,36 +23,20 @@ namespace Resume.Application.Services.Implements
             _personalInformationRepository = personalInformationRepository;
         }
 
-        public async Task EditPersonalInformationAsync(PersonalInformation personalInformation)
+        public async Task EditPersonalInformationAsync(PersonalInformationAdminDTO personalInformationAdminDTO)
         {
-            _personalInformationRepository.EditPersonalInformationAsync(personalInformation);
+            await _personalInformationRepository.EditPersonalInformationAsync(DTOMapper.ToPersonalInformation(personalInformationAdminDTO));
         }
 
-        public async Task<PersonalInformation> GetPersonalInformationAsync()
+        public async Task<PersonalInformationAdminDTO> GetPersonalInformationAdminDTOAsync()
         {
 
-            return await _personalInformationRepository.GetPersonalInformationAsync();
+            return DTOMapper.ToPersonalInformationAdminDTO(await _personalInformationRepository.GetPersonalInformationAsync());
         }
 
         public async Task<PersonalInformationDTO> GetPersonalInformationDTOAsync()
         {
-            PersonalInformation personalInformation = await GetPersonalInformationAsync();
-            PersonalInformationDTO personalInformationDTO = new();
-
-            personalInformationDTO.FName = personalInformation.FName;
-            personalInformationDTO.LName = personalInformation.LName;
-            personalInformationDTO.Address = personalInformation.Address;
-            personalInformationDTO.WebsiteAddress = personalInformation.WebsiteAddress;
-            personalInformationDTO.birthdate = personalInformation.birthdate;
-            personalInformationDTO.Description = personalInformation.Description;
-            personalInformationDTO.DescriptionTitle = personalInformation.DescriptionTitle;
-            personalInformationDTO.Email = personalInformation.Email;
-            personalInformationDTO.JobTitle = personalInformation.JobTitle;
-            personalInformationDTO.Phone = personalInformation.Phone;
-            personalInformationDTO.Picture = personalInformation.Picture;
-            
-            
-            return personalInformationDTO;
+            return DTOMapper.ToPersonalInformationDTO(await _personalInformationRepository.GetPersonalInformationAsync());
         }
     }
 }

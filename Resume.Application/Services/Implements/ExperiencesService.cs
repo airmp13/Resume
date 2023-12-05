@@ -1,4 +1,5 @@
 ﻿using Resume.Application.DTOs.Admin;
+using Resume.Application.DTOs.Mapper;
 using Resume.Application.DTOs.Site;
 using Resume.Application.Services.Interfaces;
 using Resume.Domain.Entities;
@@ -23,42 +24,16 @@ namespace Resume.Application.Services.Implements
 
         public async Task Create(ExperiencesDTO experiencesDTO)
         {
-            await _experiencesRepository.Create(new Experiences()
-            {
-                Title = experiencesDTO.Title,
-                JobTitle = experiencesDTO.JobTitle,
-                EntryDateYear = experiencesDTO.EntryDateYear,
-                Description = experiencesDTO.Description,
-                Icon = experiencesDTO.Icon,
-                position = experiencesDTO.position
-            });
+            await _experiencesRepository.Create(DTOMapper.ToExperiences(experiencesDTO));
         }
 
         public async Task Edit(ExperiencesAdminDTO experiencesAdminDTO)
         {
-            await _experiencesRepository.Edit(new Experiences()
-            {
-                ID = experiencesAdminDTO.ID,
-                Title = experiencesAdminDTO.Title,
-                JobTitle = experiencesAdminDTO.JobTitle,
-                EntryDateYear = experiencesAdminDTO.EntryDateYear,
-                Description = experiencesAdminDTO.Description,
-                Icon = experiencesAdminDTO.Icon,
-                position = experiencesAdminDTO.position
-            });
+            await _experiencesRepository.Edit(DTOMapper.ToExperiences(experiencesAdminDTO));
         }
         public async Task Delete(ExperiencesAdminDTO experiencesAdminDTO)
         {
-            await _experiencesRepository.Delete(new Experiences()
-            {
-                ID = experiencesAdminDTO.ID,
-                Title = experiencesAdminDTO.Title,
-                JobTitle = experiencesAdminDTO.JobTitle,
-                EntryDateYear = experiencesAdminDTO.EntryDateYear,
-                Description = experiencesAdminDTO.Description,
-                Icon = experiencesAdminDTO.Icon,
-                position = experiencesAdminDTO.position
-            });
+            await _experiencesRepository.Delete(DTOMapper.ToExperiences(experiencesAdminDTO));
         }
 
 
@@ -76,17 +51,8 @@ namespace Resume.Application.Services.Implements
 
             foreach (Experiences experience in experiences)
             {
-                ExperiencesAdminDTO ExperienceAdminDTO = new()
-                {
-                    ID = experience.ID,
-                    Title = experience.Title,
-                    JobTitle = experience.JobTitle,
-                    EntryDateYear = experience.EntryDateYear,
-                    Description = experience.Description,
-                    Icon = experience.Icon,
-                    position = experience.position
-                };
-                experiencesAdminDTO.Add(ExperienceAdminDTO);
+                
+                experiencesAdminDTO.Add(DTOMapper.ToExperiencesAdminDTO(experience));
             }
 
             return experiencesAdminDTO;
@@ -94,17 +60,8 @@ namespace Resume.Application.Services.Implements
 
         public async Task<ExperiencesAdminDTO> GetExperiencesAdminDTOAsync(int id)
         {
-            Experiences experiences = await _experiencesRepository.GetExperiencesAsync(id);
-            return new ExperiencesAdminDTO()
-            {
-                ID = experiences.ID,
-                Title = experiences.Title,
-                JobTitle = experiences.JobTitle,
-                Description = experiences.Description,
-                Icon = experiences.Icon,
-                position = experiences.position,
-                EntryDateYear = experiences.EntryDateYear
-            };
+             
+            return DTOMapper.ToExperiencesAdminDTO(await _experiencesRepository.GetExperiencesAsync(id));
 
         }
 
@@ -116,16 +73,7 @@ namespace Resume.Application.Services.Implements
 
             foreach (Experiences experience in experiences)
             {
-                ExperiencesDTO ExperienceDTO = new()
-                {
-                    Title = experience.Title,
-                    JobTitle = experience.JobTitle,
-                    EntryDateYear = experience.EntryDateYear,
-                    Description = experience.Description,
-                    Icon = experience.Icon,
-                    position = experience.position
-                };
-                experiencesDTO.Add(ExperienceDTO);
+                experiencesDTO.Add(DTOMapper.ToExperiencesDTO(experience));
             }
 
             return experiencesDTO;

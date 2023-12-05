@@ -1,4 +1,5 @@
 ﻿using Resume.Application.DTOs.Admin;
+using Resume.Application.DTOs.Mapper;
 using Resume.Application.DTOs.Site;
 using Resume.Application.Services.Interfaces;
 using Resume.Domain.Entities;
@@ -22,14 +23,7 @@ namespace Resume.Application.Services.Implements
 
         public async Task Create(ProjectsDTO projectsDTO)
         {
-            await _projectsRepository.Create(new Projects()
-            {
-                Name = projectsDTO.Name,
-                Description = projectsDTO.Description,
-                img = projectsDTO.img,
-                language = projectsDTO.language,
-                Url = projectsDTO.Url
-            });
+            await _projectsRepository.Create(DTOMapper.ToProjects(projectsDTO));
         }
         public async Task<List<Projects>> GetProjectsListAsync()
         {
@@ -43,15 +37,7 @@ namespace Resume.Application.Services.Implements
 
             foreach (Projects project in projects)
             {
-                ProjectsDTO projectDTO = new() 
-                { 
-                    Name = project.Name,
-                    Description = project.Description,
-                    img = project.img,
-                    language = project.language,
-                    Url = project.Url
-                };
-                projectsDTO.Add(projectDTO);
+                projectsDTO.Add(DTOMapper.ToProjectsDTO(project));
             }
 
             return projectsDTO;
@@ -94,16 +80,7 @@ namespace Resume.Application.Services.Implements
 
             foreach (Projects project in projects)
             {
-                ProjectsAdminDTO projectDTO = new()
-                {
-                    ID = project.ID,
-                    Name = project.Name,
-                    Description = project.Description,
-                    img = project.img,
-                    language = project.language,
-                    Url = project.Url
-                };
-                projectsAdminDTO.Add(projectDTO);
+                projectsAdminDTO.Add(DTOMapper.ToProjectsAdminDTO(project));
             }
 
             return projectsAdminDTO;
@@ -112,32 +89,15 @@ namespace Resume.Application.Services.Implements
 
         public async Task<ProjectsAdminDTO> GetProjectAdminDTOAsync(int id)
         {
-            Projects project = await _projectsRepository.GetProjectsAsync(id);
 
-            return new ProjectsAdminDTO()
-            {
-                ID = project.ID,
-                Name = project.Name,
-                Description = project.Description,
-                img = project.img,
-                language = project.language,
-                Url = project.Url
-            };
+
+            return DTOMapper.ToProjectsAdminDTO(await _projectsRepository.GetProjectsAsync(id));
 
         }
 
         public async Task Edit(ProjectsAdminDTO projectsAdminDTO)
         {
-            await _projectsRepository.Edit(new Projects()
-            {
-                Description = projectsAdminDTO.Description,
-                ID = projectsAdminDTO.ID,
-                Name = projectsAdminDTO.Name,
-                Url = projectsAdminDTO.Url,
-                img = projectsAdminDTO.img,
-                language=projectsAdminDTO.language
-                
-            });
+            await _projectsRepository.Edit(DTOMapper.ToProjects(projectsAdminDTO));
         }
 
         public async Task Delete(int id)
