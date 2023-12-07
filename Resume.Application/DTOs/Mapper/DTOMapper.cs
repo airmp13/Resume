@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Resume.Application.DTOs.Mapper
@@ -84,9 +85,10 @@ namespace Resume.Application.DTOs.Mapper
                 ID = contactMeAdminDTO.ID,
                 Email = contactMeAdminDTO.Email,
                 Message = contactMeAdminDTO.Message,
-                PhoneNumber = contactMeAdminDTO.PhoneNumber
+                PhoneNumber = contactMeAdminDTO.PhoneNumber,
+				IsRead = contactMeAdminDTO.IsRead
 
-            };
+			};
         }
 
         public static ContactMeAdminDTO ToContactMeAdminDTO(ContactMe contactMe)
@@ -96,8 +98,9 @@ namespace Resume.Application.DTOs.Mapper
                 ID = contactMe.ID,
                 Email = contactMe.Email,
                 Message = contactMe.Message,
-                PhoneNumber = contactMe.PhoneNumber
-            };
+                PhoneNumber = contactMe.PhoneNumber,
+				IsRead = contactMe.IsRead
+			};
         }
 
 
@@ -278,7 +281,7 @@ namespace Resume.Application.DTOs.Mapper
                 Email = personalInformationDTO.Email,
                 JobTitle = personalInformationDTO.JobTitle,
                 Phone = personalInformationDTO.Phone,
-                Picture = personalInformationDTO.Picture
+                ProfilePicPath = personalInformationDTO.ProfilePicPath
 
             };
 
@@ -299,7 +302,7 @@ namespace Resume.Application.DTOs.Mapper
                 Email = personalInformationAdminDTO.Email,
                 JobTitle = personalInformationAdminDTO.JobTitle,
                 Phone = personalInformationAdminDTO.Phone,
-                Picture = personalInformationAdminDTO.Picture
+                ProfilePicPath = personalInformationAdminDTO.ProfilePicPath
 
             };
         }
@@ -318,7 +321,7 @@ namespace Resume.Application.DTOs.Mapper
                 Email = personalInformation.Email,
                 JobTitle = personalInformation.JobTitle,
                 Phone = personalInformation.Phone,
-                Picture = personalInformation.Picture
+                ProfilePicPath = personalInformation.ProfilePicPath
 
             };
         }
@@ -338,7 +341,7 @@ namespace Resume.Application.DTOs.Mapper
                 Email = personalInformation.Email,
                 JobTitle = personalInformation.JobTitle,
                 Phone = personalInformation.Phone,
-                Picture = personalInformation.Picture
+                ProfilePicPath = personalInformation.ProfilePicPath
             };
         }
 

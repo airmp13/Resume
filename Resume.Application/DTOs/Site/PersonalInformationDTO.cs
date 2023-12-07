@@ -8,7 +8,7 @@ namespace Resume.Application.DTOs.Site
 {
     public class PersonalInformationDTO
     {
-        public string Picture { get; set; }
+        public string ProfilePicPath { get; set; }
         public string FName { get; set; }
         public string LName { get; set; }
         public string JobTitle { get; set; }

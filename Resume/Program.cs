@@ -7,6 +7,7 @@ using Resume.Infrastructure;
 using Resume.Infrastructure.Repositories;
 using System;
 
+
 namespace Resume
 {
     public class Program
@@ -28,6 +29,7 @@ namespace Resume
             builder.Services.AddScoped<IProjectsService, ProjectsService>();
             builder.Services.AddScoped<IContactMeService, ContactMeService>();
             builder.Services.AddScoped<IAccountService, AccountService>();
+            builder.Services.AddScoped<IUploadService, UploadService>();
 
             //Repository Injections
             builder.Services.AddScoped<IPersonalInformationRepository, PersonalInformationRepository>();
@@ -39,6 +41,7 @@ namespace Resume
             builder.Services.AddScoped<IContactMeRepository, ContactMeRepository>();
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 
+            
             // Sql Injection
 
             builder.Services.AddDbContext<ResumeDbContext>(op =>

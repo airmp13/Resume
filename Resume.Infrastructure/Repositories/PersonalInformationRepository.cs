@@ -21,7 +21,7 @@ namespace Resume.Infrastructure.Repositories
         public async Task EditPersonalInformationAsync(PersonalInformation personalInformation)
         {
               _resumeDbContext.personalInformation.Update(personalInformation);
-             _resumeDbContext.SaveChanges();
+             await _resumeDbContext.SaveChangesAsync();
            
         }
 

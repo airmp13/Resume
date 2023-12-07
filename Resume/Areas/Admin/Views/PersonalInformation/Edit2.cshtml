@@ -1,19 +1,21 @@
 ﻿@model Resume.Application.DTOs.Admin.PersonalInformationAdminDTO
 
-
-
-<h4>PersonalInformation</h4>
+<h4>PersonalInformationAdminDTO</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form enctype="multipart/form-data" asp-action="Edit">
+        <form asp-action="Edit2">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ID" class="control-label"></label>
                 <input asp-for="ID" class="form-control" />
                 <span asp-validation-for="ID" class="text-danger"></span>
             </div>
-            
+            <div class="form-group">
+                <label asp-for="ProfilePicPath" class="control-label"></label>
+                <input asp-for="ProfilePicPath" class="form-control" />
+                <span asp-validation-for="ProfilePicPath" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="FName" class="control-label"></label>
                 <input asp-for="FName" class="form-control" />
@@ -36,7 +38,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
-                <textarea asp-for="Description" class="form-control" ></textarea>
+                <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -63,17 +65,6 @@
                 <label asp-for="WebsiteAddress" class="control-label"></label>
                 <input asp-for="WebsiteAddress" class="form-control" />
                 <span asp-validation-for="WebsiteAddress" class="text-danger"></span>
-            </div>
-            <div>
-                <img src="/@Html.DisplayFor(model => model.ProfilePicPath)" width="150" height="150" />
-            </div>
-            <div class="form-group">
-                <label asp-for="ProfilePicPath" class="control-label" hidden="hidden"></label>
-                <input asp-for="ProfilePicPath" class="form-control" hidden="hidden" />
-            </div>
-            <div class="form-group">
-                <label asp-for="ProfilePicture" class="control-label"></label>
-                <input asp-for="ProfilePicture" class="form-control" />
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

@@ -20,7 +20,7 @@ namespace Resume.Infrastructure.Repositories
 
         public async Task EditAboutMeAsync(AboutMe aboutMe)
         {
-            _resumeDbContext.aboutMe.Update(aboutMe);
+             _resumeDbContext.aboutMe.Update(aboutMe);
             await _resumeDbContext.SaveChangesAsync();
 
         }

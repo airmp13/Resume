@@ -21,6 +21,8 @@ namespace Resume.Application.DTOs.Admin
 
         public string subtitle1 { get; set; }
 
+        public bool IsRead { get; set; }
+
 
 
 

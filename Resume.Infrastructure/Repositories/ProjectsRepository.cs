@@ -20,8 +20,8 @@ namespace Resume.Infrastructure.Repositories
 
         public async Task Create(Projects projects)
         {
-            _context.projects.Add(projects);
-            _context.SaveChanges();
+            await _context.projects.AddAsync(projects);
+            await _context.SaveChangesAsync();
         }
         public async Task<List<Projects>> GetProjectsListAsync()
         {
@@ -30,20 +30,20 @@ namespace Resume.Infrastructure.Repositories
 
         public async Task<Projects> GetProjectsAsync(int id)
         {
-            return _context.projects.FirstOrDefault(p => p.ID == id);
+            return await _context.projects.FirstOrDefaultAsync(p => p.ID == id);
         }
 
         public async Task Edit(Projects projects)
         {
 
             _context.projects.Update(projects);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
         public async Task Delete(Projects projects)
         {
             _context.projects.Remove(projects);
-            _context.SaveChanges();
-        }
-    }
+			await _context.SaveChangesAsync();
+		}
+	}
 }

@@ -29,8 +29,9 @@ namespace Resume.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(PersonalInformationAdminDTO personalInformationAdminDTO)
         {
+            
             await _personalInformationService.EditPersonalInformationAsync(personalInformationAdminDTO);
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }

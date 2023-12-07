@@ -16,5 +16,7 @@ namespace Resume.Application.DTOs.Site
 
         public string Message { get; set; }
 
+        public bool IsRead { get; set; }
+
     }
 }

@@ -24,7 +24,7 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+            <tr style="@Html.Raw(item.IsRead == false ? "font-weight:bold" : "")">
             <td>
                 @Html.DisplayFor(modelItem => item.ID)
             </td>

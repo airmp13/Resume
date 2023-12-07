@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+
 
 namespace Resume.Application.DTOs.Admin
 {
     public class PersonalInformationAdminDTO
     {
         public int ID { get; set; }
-        public string Picture { get; set; }
+        public string ProfilePicPath { get; set; }
         public string FName { get; set; }
         public string LName { get; set; }
         public string JobTitle { get; set; }
@@ -20,6 +22,7 @@ namespace Resume.Application.DTOs.Admin
         public string Address { get; set; }
         public string Email { get; set; }
         public string WebsiteAddress { get; set; }
+        public IFormFile ProfilePicture { get; set; }
 
 
 

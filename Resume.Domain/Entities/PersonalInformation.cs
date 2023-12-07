@@ -10,7 +10,7 @@ namespace Resume.Domain.Entities
     {
         public int ID { get; set; }
 
-        public string Picture { get; set; }
+        public string ProfilePicPath { get; set; }
         public string FName { get; set; }
         public string LName { get; set; }
         public string JobTitle { get; set; }

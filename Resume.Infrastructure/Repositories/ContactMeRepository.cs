@@ -20,18 +20,23 @@ namespace Resume.Infrastructure.Repositories
         }
         public async Task SubmitNewContactMe(ContactMe contactMe)
         {
+            contactMe.IsRead = false;
             _context.contactMe.Add(contactMe);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
         public async Task<List<ContactMe>> GetContactMesListAsync()
         {
-            return _context.contactMe.ToList();
+            return await _context.contactMe.ToListAsync();
         }
 
         public async Task<ContactMe> GetContactMeAsync(int id)
         {
-            return await _context.contactMe.FirstOrDefaultAsync(c => c.ID == id);
+            ContactMe contactMe = await _context.contactMe.FirstOrDefaultAsync(c => c.ID == id);
+            contactMe.IsRead = true;
+            _context.Update(contactMe);
+            await _context.SaveChangesAsync(true);
+            return contactMe;
         }
 
         public async Task Delete(ContactMe contactMe)

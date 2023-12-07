@@ -17,5 +17,7 @@ namespace Resume.Domain.Entities
 
         public string Message { get; set; }
 
+        public bool IsRead { get; set; }
+
     }
 }
