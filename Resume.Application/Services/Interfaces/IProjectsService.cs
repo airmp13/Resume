@@ -11,7 +11,7 @@ namespace Resume.Application.Services.Interfaces
 {
     public interface IProjectsService
     {
-        Task Create(ProjectsDTO projectsDTO);
+        Task Create(ProjectsAdminDTO projectsAdminDTO);
         Task<List<Projects>> GetProjectsListAsync();
 
         Task<Dictionary<string, int>> GetAboutMeProjectsAsync();

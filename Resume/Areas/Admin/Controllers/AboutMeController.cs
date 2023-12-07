@@ -34,7 +34,7 @@ namespace Resume.Areas.Admin.Controllers
         public async Task<IActionResult> Edit(AboutMeAdminDTO aboutMeAdminDTO)
         {
             await _aboutMeService.EditAboutMeAdminDTOAsync(aboutMeAdminDTO);
-            return View();
+            return RedirectToAction("Index");
         }
 
     }

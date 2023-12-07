@@ -12,8 +12,8 @@ namespace Resume.Domain.Entities
 
         public string Title1 { get; set; }
         public string Title2 { get; set; }
-        public string Title1_img { get; set; }
-        public string Title2_img { get; set; }
+        public string Title1_PicPath { get; set; }
+        public string Title2_PicPath { get; set; }
 
         public string Description1 { get; set; }
 

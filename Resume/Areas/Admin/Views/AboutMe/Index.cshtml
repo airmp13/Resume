@@ -12,12 +12,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Title2)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title1_img)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title2_img)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.Description1)
             </th>
@@ -39,12 +34,7 @@
             <td>
                 @Html.DisplayFor(modelItem => modelItem.Title2)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => modelItem.Title1_img)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => modelItem.Title2_img)
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => modelItem.Description1)
             </td>
@@ -55,9 +45,8 @@
                 @Html.DisplayFor(modelItem => modelItem.subtitle1)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new {  /*id=Model.ID*/  }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new {  /*id=Model.ID*/  })
+                
             </td>
         </tr>
 

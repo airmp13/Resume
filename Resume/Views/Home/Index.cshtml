@@ -96,7 +96,7 @@
 		<div class="w3-about-grids">
 			<div class=" w3-about-grids1">
 				<div class="col-md-6 w3-about-grid-left1">
-					<img src=@Model.AboutMeDTO.Title1_img alt="img1">
+					<img src=@Model.AboutMeDTO.Title1_PicPath alt="img1">
 
 				</div>
 				<div class="col-md-6 w3-about-grid-right1">
@@ -125,7 +125,7 @@
 
 					</div>
 					<div class="col-md-6 w3-about-grid-right2">
-						<img src=@Model.AboutMeDTO.Title2_img alt="img1">
+						<img src=@Model.AboutMeDTO.Title2_PicPath alt="img1">
 
 					</div>
 					<div class="clearfix"></div>
@@ -275,7 +275,7 @@
 						<div class="col-md-4 col-ms-6 jm-item first filtr-item" data-category=" 5" data-sort="Busy streets" style="opacity: 1; transform: scale(1) translate3d(0px, 0px, 0px); backface-visibility: hidden; perspective: 1000px; transform-style: preserve-3d; position: absolute; transition: all 0.5s ease-out 0ms;">
 								<div class="jm-item-wrapper">
 									<div class="jm-item-image">
-										<img src=@proj.img alt="property" />
+									<img src=@proj.PicPath alt="property" />
 										<span class="jm-item-overlay"> </span>
 										<div class="jm-item-button"><a href="#" data-toggle="modal" data-target=@data >View Details</a></div>
 									</div>
@@ -302,7 +302,7 @@
 				<!-- Modal content-->
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<div class="w3ls-property-images">
-					<img src=@projdetail.img alt="image">
+				<img src=@projdetail.PicPath alt="image">
 				</div>
 
 				<div class="ins-details">

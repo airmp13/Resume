@@ -29,10 +29,10 @@ namespace Resume.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(ProjectsDTO projectsDTO)
+        public async Task<IActionResult> Create(ProjectsAdminDTO projectsAdminDTO)
         {
-            await _projectsService.Create(projectsDTO);
-            return View();
+            await _projectsService.Create(projectsAdminDTO);
+            return RedirectToAction("Index");
         }
 
 
@@ -47,8 +47,8 @@ namespace Resume.Areas.Admin.Controllers
         {
             await _projectsService.Edit(projectsAdminDTO);
 
-            return View() ;
-        }
+			return RedirectToAction("Index");
+		}
 
         public async Task<IActionResult> Details(int id)
         {
@@ -65,8 +65,8 @@ namespace Resume.Areas.Admin.Controllers
         public async Task<IActionResult> Delete(ProjectsAdminDTO projectsAdminDTO)
         {
             await _projectsService.Delete(projectsAdminDTO.ID);
-            return View();
-        }
+			return RedirectToAction("Index");
+		}
 
     }
 }

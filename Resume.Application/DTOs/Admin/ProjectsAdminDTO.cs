@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,9 @@ namespace Resume.Application.DTOs.Admin
 
         public string language { get; set; }
 
-        public string img { get; set; }
+        public string PicPath { get; set; }
+
+        public IFormFile Pic{ get; set; }
 
         public string Description { get; set; }
 

@@ -13,7 +13,7 @@ namespace Resume.Application.DTOs.Site
 
         public string language { get; set; }
 
-        public string img { get; set; }
+        public string PicPath { get; set; }
 
         public string Description { get; set; }
 

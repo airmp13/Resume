@@ -26,8 +26,8 @@ namespace Resume.Application.DTOs.Mapper
                 subtitle1 = aboutMe.subtitle1,
                 Title1 = aboutMe.Title1,
                 Title2 = aboutMe.Title2,
-                Title1_img = aboutMe.Title1_img,
-                Title2_img = aboutMe.Title2_img
+                Title1_PicPath = aboutMe.Title1_PicPath,
+                Title2_PicPath = aboutMe.Title2_PicPath
             };
 
         }
@@ -42,8 +42,8 @@ namespace Resume.Application.DTOs.Mapper
                 subtitle1 = aboutMe.subtitle1,
                 Title1 = aboutMe.Title1,
                 Title2 = aboutMe.Title2,
-                Title1_img = aboutMe.Title1_img,
-                Title2_img = aboutMe.Title2_img
+                Title1_PicPath = aboutMe.Title1_PicPath,
+                Title2_PicPath = aboutMe.Title2_PicPath
             };
         }
 
@@ -57,8 +57,8 @@ namespace Resume.Application.DTOs.Mapper
                 subtitle1 = aboutMeAdminDTO.subtitle1,
                 Title1 = aboutMeAdminDTO.Title1,
                 Title2 = aboutMeAdminDTO.Title2,
-                Title1_img = aboutMeAdminDTO.Title1_img,
-                Title2_img = aboutMeAdminDTO.Title2_img
+                Title1_PicPath = aboutMeAdminDTO.Title1_PicPath,
+                Title2_PicPath = aboutMeAdminDTO.Title2_PicPath
             };
         }
 
@@ -355,7 +355,7 @@ namespace Resume.Application.DTOs.Mapper
             {
                 Name = projectsDTO.Name,
                 Description = projectsDTO.Description,
-                img = projectsDTO.img,
+                PicPath = projectsDTO.PicPath,
                 language = projectsDTO.language,
                 Url = projectsDTO.Url
             };
@@ -370,7 +370,7 @@ namespace Resume.Application.DTOs.Mapper
                 Name = projectsAdminDTO.Name,
                 Description = projectsAdminDTO.Description,
                 Url = projectsAdminDTO.Url,
-                img = projectsAdminDTO.img,
+                PicPath = projectsAdminDTO.PicPath,
                 language = projectsAdminDTO.language
 
             };
@@ -382,7 +382,7 @@ namespace Resume.Application.DTOs.Mapper
             {
                 Name = projects.Name,
                 Description = projects.Description,
-                img = projects.img,
+                PicPath = projects.PicPath,
                 language = projects.language,
                 Url = projects.Url
             };
@@ -395,7 +395,7 @@ namespace Resume.Application.DTOs.Mapper
                 ID = projects.ID,
                 Name = projects.Name,
                 Description = projects.Description,
-                img = projects.img,
+                PicPath = projects.PicPath,
                 language = projects.language,
                 Url = projects.Url
             };

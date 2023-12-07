@@ -1,4 +1,5 @@
-﻿using Resume.Application.DTOs.Admin;
+﻿using Microsoft.AspNetCore.Hosting;
+using Resume.Application.DTOs.Admin;
 using Resume.Application.DTOs.Mapper;
 using Resume.Application.DTOs.Site;
 using Resume.Application.Services.Interfaces;
@@ -15,17 +16,54 @@ namespace Resume.Application.Services.Implements
     public class ProjectsService : IProjectsService
     {
         private readonly IProjectsRepository _projectsRepository;
+		private readonly IUploadService _uploadService;
+		private readonly IHostingEnvironment _hostingEnvironment;
 
-        public ProjectsService(IProjectsRepository projectsRepository)
+		public ProjectsService(IProjectsRepository projectsRepository,
+            IUploadService uploadService,
+            IHostingEnvironment hostingEnvironment)
         {
             _projectsRepository = projectsRepository;
+			_uploadService = uploadService;
+			_hostingEnvironment = hostingEnvironment;
+		}
+
+        public async Task Create(ProjectsAdminDTO projectsAdminDTO)
+        {
+            projectsAdminDTO.PicPath = "null";
+            if(projectsAdminDTO.Pic != null)
+            {
+                projectsAdminDTO.PicPath = _uploadService.UploadFile(projectsAdminDTO.Pic, "HomeFiles/images");
+            }
+
+            await _projectsRepository.Create(DTOMapper.ToProjects(projectsAdminDTO));
         }
 
-        public async Task Create(ProjectsDTO projectsDTO)
-        {
-            await _projectsRepository.Create(DTOMapper.ToProjects(projectsDTO));
-        }
-        public async Task<List<Projects>> GetProjectsListAsync()
+		public async Task Edit(ProjectsAdminDTO projectsAdminDTO)
+		{
+            if(projectsAdminDTO.Pic != null)
+            {
+                if(projectsAdminDTO.PicPath != null)
+                {
+                    string existfile = Path.Combine(_hostingEnvironment.WebRootPath, projectsAdminDTO.PicPath);
+                    System.IO.File.Delete(existfile);
+                }
+                projectsAdminDTO.PicPath = _uploadService.UploadFile(projectsAdminDTO.Pic, "HomeFiles/images");
+            }
+			await _projectsRepository.Edit(DTOMapper.ToProjects(projectsAdminDTO));
+		}
+
+		public async Task Delete(int id)
+		{
+            Projects projects = await _projectsRepository.GetProjectsAsync(id);
+            string existfile = Path.Combine(_hostingEnvironment.WebRootPath,projects.PicPath);
+            System.IO.File.Delete( existfile);  
+			await _projectsRepository.Delete(projects);
+
+		}
+
+
+		public async Task<List<Projects>> GetProjectsListAsync()
         {
             return await _projectsRepository.GetProjectsListAsync();
         }
@@ -95,16 +133,7 @@ namespace Resume.Application.Services.Implements
 
         }
 
-        public async Task Edit(ProjectsAdminDTO projectsAdminDTO)
-        {
-            await _projectsRepository.Edit(DTOMapper.ToProjects(projectsAdminDTO));
-        }
-
-        public async Task Delete(int id)
-        {
-            
-            await _projectsRepository.Delete(await _projectsRepository.GetProjectsAsync(id));
-        }
+        
 
     }
 }
