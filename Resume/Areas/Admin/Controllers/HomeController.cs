@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Resume.Application.Services.Interfaces;
 
 namespace Resume.Areas.Admin.Controllers
 {
@@ -8,10 +9,16 @@ namespace Resume.Areas.Admin.Controllers
     
     public class HomeController : Controller
     {
-        
-        public IActionResult Index()
+		private readonly IAdminHomePageService _adminHomePageService;
+
+		public HomeController(IAdminHomePageService adminHomePageService)
         {
-            return View();
+			_adminHomePageService = adminHomePageService;
+		}
+
+        public async Task<IActionResult> Index()
+        {
+            return View(await _adminHomePageService.GetAll());
         }
     }
 }

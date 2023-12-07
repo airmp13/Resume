@@ -44,6 +44,9 @@ namespace Resume.Infrastructure.Repositories
         {
             _context.projects.Remove(projects);
 			await _context.SaveChangesAsync();
+
 		}
+
+        
 	}
 }

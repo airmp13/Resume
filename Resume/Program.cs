@@ -30,6 +30,7 @@ namespace Resume
             builder.Services.AddScoped<IContactMeService, ContactMeService>();
             builder.Services.AddScoped<IAccountService, AccountService>();
             builder.Services.AddScoped<IUploadService, UploadService>();
+            builder.Services.AddScoped<IAdminHomePageService, AdminHomePageService>();
 
             //Repository Injections
             builder.Services.AddScoped<IPersonalInformationRepository, PersonalInformationRepository>();
@@ -40,6 +41,7 @@ namespace Resume
             builder.Services.AddScoped<IProjectsRepository, ProjectsRepository>();
             builder.Services.AddScoped<IContactMeRepository, ContactMeRepository>();
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+            builder.Services.AddScoped<IAdminHomePageRepository, AdminHomePageRepository>();
 
             
             // Sql Injection
