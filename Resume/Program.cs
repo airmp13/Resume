@@ -1,3 +1,4 @@
+using DNTCaptcha.Core;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Resume.Application.Services.Implements;
@@ -67,6 +68,12 @@ namespace Resume
                     options.ExpireTimeSpan = TimeSpan.FromDays(30);
                 });
 
+            builder.Services.AddDNTCaptcha(option =>
+            {
+                option.UseCookieStorageProvider().ShowThousandsSeparators(false);
+                option.WithEncryptionKey("assdDFNHMVCVTRf5rGRTNB");
+            });
+
 
             var app = builder.Build();
 
@@ -81,6 +88,7 @@ namespace Resume
 
             app.UseAuthentication();
             app.UseAuthorization();
+
 
             app.MapControllerRoute(
                 name: "Admin",

@@ -5,10 +5,12 @@ using Resume.Application.DTOs.Admin;
 using Resume.Application.Services.Interfaces;
 using Resume.Domain.Entities;
 using System.Security.Claims;
+using DNTCaptcha.Core;
 
 namespace Resume.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [ValidateDNTCaptcha(ErrorMessage ="Please Enter Captcha Code!")]
     public class AccountController : Controller
     {
         private readonly IAccountService _accountService;
